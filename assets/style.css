@@ -1,0 +1,43 @@
+#highScore,
+#timeLeft {
+  width: 14vw;
+  height: 14vw;
+  background-color: blue;
+  display: inline-block;
+  margin: 0;
+  position: absolute;
+  /* border-radius: 2vw; */
+}
+
+#highScore {
+  top: 2vh;
+  left: 4vw;
+}
+
+#timeLeft {
+  top: 2vh;
+  right: 4vw;
+}
+
+#title div {
+  height: 12vw;
+  width: 52vw;
+  margin: 0 auto;
+  position: absolute;
+  top: 2vh;
+}
+
+#title h1,
+#title p {
+  text-align: center;
+}
+
+main {
+  display: block;
+  background-color: aqua;
+  position: absolute;
+  top: 30vh;
+  width: 52vw;
+  height: 65vh;
+  margin: 0 24vw;
+}
