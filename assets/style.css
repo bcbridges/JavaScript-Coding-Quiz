@@ -1,12 +1,27 @@
+:root {
+  --gray: rgb(196, 196, 196);
+  --green: rgb(83, 159, 91);
+  --darkgreen: rgb(20, 87, 27);
+}
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
 #highScore,
 #timeLeft {
-  width: 14vw;
-  height: 14vw;
-  background-color: blue;
+  width: 15vw;
+  height: 15vw;
+  background-color: var(--green);
   display: inline-block;
-  margin: 0;
   position: absolute;
-  /* border-radius: 2vw; */
+  border-radius: 2vw;
+  font-size: 2.75vw;
+}
+
+#highScore p,
+#timeLeft p {
+  margin: 0.75vw 0 0 0.75vw;
 }
 
 #highScore {
@@ -17,6 +32,12 @@
 #timeLeft {
   top: 2vh;
   right: 4vw;
+}
+
+#highScore img {
+  width: 6vw;
+  height: auto;
+  margin-left: 4vw;
 }
 
 #title div {
@@ -32,12 +53,45 @@
   text-align: center;
 }
 
+#title h1 {
+  font-size: 5vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+}
+
+#title p {
+  font-size: 1vw;
+  margin-top: 0;
+}
+
 main {
   display: block;
-  background-color: aqua;
+  background-color: var(--gray);
   position: absolute;
   top: 30vh;
   width: 52vw;
   height: 65vh;
   margin: 0 24vw;
+  border-radius: 2vw;
+}
+
+main p {
+  font-size: 2vw;
+  margin: 2vw;
+}
+
+main button {
+  font-size: 2vw;
+  background-color: var(--green);
+  width: 15vw;
+  border-radius: 2vw;
+  position: absolute;
+  left: 18vw;
+  padding: 0.75vh;
+  font-weight: bolder;
+}
+
+main button:hover {
+  background-color: var(--darkgreen);
+  color: white;
 }

@@ -5,27 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <title>JavaScript Quiz</title>
   </head>
   <body>
     <section>
       <div id="highScore">
         <p>High Scores</p>
-        <img src="" alt="Crown Image" />
+        <img
+          src="./assets/images/transparent-crown-png-11552505984kxtbacflqa.png"
+          alt="Crown Image"
+        />
       </div>
       <div id="title">
         <h1>JavaScript Code Quiz</h1>
         <p>By Brice Bridges</p>
       </div>
       <div id="timeLeft">
-        <p>Time Remaining</p>
-        <p id="seconds">
-          <!-- time left -->
-        </p>
+        <p>Time Remaining:</p>
+        <p id="seconds">75 sec.</p>
       </div>
     </section>
     <main>
-      <!-- Main body of the quiz. Contains beginning screen, questions, and high scores. -->
+      <p>
+        This is a timed quiz testing your knowlege of the JavaScript basics.
+      </p>
+      <p>
+        You will have 75 seconds to answer all 15 questions. Any incorrect
+        questions will reduce your time by 10 seconds.
+      </p>
+      <p>
+        Try to finish with as much time left to get placed on the leaderboard!
+      </p>
+      <button>Start!</button>
     </main>
   </body>
 </html>
