@@ -95,3 +95,17 @@ main button:hover {
   background-color: var(--darkgreen);
   color: white;
 }
+
+label {
+  font-size: 2vw;
+}
+
+label::after {
+  content: "\A";
+  white-space: pre;
+}
+
+input[type="radio"] {
+  display: inline;
+  margin-left: 2vw;
+}

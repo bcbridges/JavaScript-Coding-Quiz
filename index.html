@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="./assets/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,17 +33,19 @@
       </div>
     </section>
     <main>
-      <p>
-        This is a timed quiz testing your knowlege of the JavaScript basics.
-      </p>
-      <p>
-        You will have 75 seconds to answer all 15 questions. Any incorrect
-        questions will reduce your time by 10 seconds.
-      </p>
-      <p>
-        Try to finish with as much time left to get placed on the leaderboard!
-      </p>
-      <button>Start!</button>
+      <div>
+        <form id="mainDisplay"></form>
+        <p class="instructions">
+          • This is a timed quiz testing your knowlege of the JavaScript
+          fundamentals. <br />
+          • You will have 75 seconds to answer all 10 questions. Any incorrect
+          answers will reduce your time by 15 seconds. <br />
+          • Try to finish with as much time left to get placed on the
+          leaderboard!
+        </p>
+        <button id="start">Start!</button>
+      </div>
     </main>
+    <script src="./assets/script.js"></script>
   </body>
 </html>
