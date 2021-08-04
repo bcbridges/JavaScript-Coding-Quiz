@@ -3,7 +3,7 @@ var instructions = document.querySelector(".instructions");
 var mainDisplay = document.querySelector("#mainDisplay");
 var answerChoice = document.querySelector("ol");
 var secondsRemaining = document.querySelector("#seconds");
-
+var currentQuestion = 0;
 // Sets timer to stay at 75 seconds until the 'Start' button is pushed.
 var timeLeft = 75;
 secondsRemaining.textContent = timeLeft + " sec.";
@@ -20,26 +20,71 @@ var questions = {
     ],
     solutionindex: 3,
   },
-  // question2: ,
-  // question3: ,
-  // question4: ,
-  // question5: ,
-  // question6: ,
-  // question7: ,
-  // question8: ,
-  // question9: ,
-  // question10:
+  question2: {
+    prompt: "Which of the following is selecting and id of 'code'?",
+    answers: [
+      'documnet.querySelector("#code"',
+      'documnet.querySelector(".code")',
+      'document.idSelector("code")',
+      'document.idSelector("#code")',
+    ],
+    solutionindex: 1,
+  },
+  question3: {
+    prompt: "Which of the following is selecting and id of 'q2'?",
+    answers: [
+      'documnet.querySelector("#code"',
+      'documnet.querySelector(".code")',
+      'document.idSelector("code")',
+      'document.idSelector("#code")',
+    ],
+    solutionindex: 1,
+  },
+  question4: {
+    prompt: "Which of the following is selecting and id of 'q3'?",
+    answers: [
+      'documnet.querySelector("#code"',
+      'documnet.querySelector(".code")',
+      'document.idSelector("code")',
+      'document.idSelector("#code")',
+    ],
+    solutionindex: 1,
+  },
+  question5: {
+    prompt: "Which of the following is selecting and id of 'q4'?",
+    answers: [
+      'documnet.querySelector("#code"',
+      'documnet.querySelector(".code")',
+      'document.idSelector("code")',
+      'document.idSelector("#code")',
+    ],
+    solutionindex: 1,
+  },
 };
 
 // Called when the game starts
 startButton.addEventListener("click", function () {
   instructions.setAttribute("style", "display: none");
   startButton.setAttribute("style", "display: none");
+  changeQuestion();
   createQuestion();
   timerStart();
 });
 
-// Work on function for changing questions
+// Changes the current question
+function changeQuestion() {
+  if (currentQuestion == 0) {
+    currentQuestion = questions.question1;
+  } else if (currentQuestion == questions.question1) {
+    currentQuestion = questions.question2;
+  } else if (currentQuestion == questions.question2) {
+    currentQuestion = questions.question3;
+  } else if (currentQuestion == questions.question3) {
+    currentQuestion = questions.question4;
+  } else if (currentQuestion == questions.question4) {
+    currentQuestion = questions.question5;
+  }
+}
 
 // Used to append the questions
 function createQuestion() {
@@ -49,11 +94,11 @@ function createQuestion() {
   var opt3 = document.createElement("li");
   var opt4 = document.createElement("li");
 
-  prompt.textContent = questions.question1.prompt;
-  opt1.textContent = questions.question1.answers[0];
-  opt2.textContent = questions.question1.answers[1];
-  opt3.textContent = questions.question1.answers[2];
-  opt4.textContent = questions.question1.answers[3];
+  prompt.textContent = currentQuestion.prompt;
+  opt1.textContent = currentQuestion.answers[0];
+  opt2.textContent = currentQuestion.answers[1];
+  opt3.textContent = currentQuestion.answers[2];
+  opt4.textContent = currentQuestion.answers[3];
 
   opt1.setAttribute("id", "1");
   opt2.setAttribute("id", "2");
@@ -82,9 +127,12 @@ function timerStart() {
 
 answerChoice.addEventListener("click", function (event) {
   var selectedAnswer = event.target.getAttribute("id");
-  var correctAnswer = questions.question1.solutionindex;
+  var correctAnswer = currentQuestion.solutionindex;
 
   if (selectedAnswer == correctAnswer) {
     document.querySelector("h5").textContent = "Correct!";
-  } else document.querySelector("h5").textContent = "Incorrect";
+  } else {
+    timeLeft -= 20;
+    document.querySelector("h5").textContent = "Incorrect";
+  }
 });
