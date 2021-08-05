@@ -3,6 +3,7 @@ var instructions = document.querySelector(".instructions");
 var mainDisplay = document.querySelector("#mainDisplay");
 var answerChoice = document.querySelector("ol");
 var secondsRemaining = document.querySelector("#seconds");
+var leaderBoard = document.querySelector("#highScore");
 var currentQuestion = 0;
 var score = 0;
 // Sets timer to stay at 75 seconds until the 'Start' button is pushed.
@@ -32,34 +33,26 @@ var questions = {
     solutionindex: 1,
   },
   question3: {
-    prompt: "Which of the following is selecting and id of 'q3'?",
+    prompt:
+      "Question 3: Which of the following will update the displayed text of the variable 'cow'?",
     answers: [
-      'documnet.querySelector("#code"',
-      'documnet.querySelector(".code")',
-      'document.idSelector("code")',
-      'document.idSelector("#code")',
+      'cow.textUpdate("Hello World")',
+      'cow.textContent = "Hello World"',
+      'cow.textContent("Hello World")',
+      'cow.insertText = "Hello World"',
     ],
-    solutionindex: 1,
+    solutionindex: 2,
   },
   question4: {
-    prompt: "Which of the following is selecting and id of 'q4'?",
-    answers: [
-      'documnet.querySelector("#code"',
-      'documnet.querySelector(".code")',
-      'document.idSelector("code")',
-      'document.idSelector("#code")',
-    ],
-    solutionindex: 1,
+    prompt: "Question 4: Which of the following is NOT an arithmetic operator?",
+    answers: ["*", "++", "-", "="],
+    solutionindex: 4,
   },
   question5: {
-    prompt: "Which of the following is selecting and id of 'q5'?",
-    answers: [
-      'documnet.querySelector("#code"',
-      'documnet.querySelector(".code")',
-      'document.idSelector("code")',
-      'document.idSelector("#code")',
-    ],
-    solutionindex: 1,
+    prompt:
+      "Question 5: 'Apples' is what index number in this array? ['Oranges', 'Apples', 'Pears']",
+    answers: ["0", "1", "2", "3"],
+    solutionindex: 2,
   },
 };
 
@@ -141,9 +134,11 @@ function timerStart() {
     timeLeft--;
     secondsRemaining.textContent = timeLeft + " sec.";
 
-    if (timeLeft === 0 || currentQuestion == "end") {
+    if (timeLeft <= 0 && currentQuestion != "end") {
+      endGame();
       clearInterval(timerInterval);
-      // Should end game after this
+    } else if (timeLeft >= 0 && currentQuestion == "end") {
+      clearInterval(timerInterval);
     }
   }, 1000);
 }
@@ -199,11 +194,56 @@ function endGame() {
 
 var form = document.querySelector("form");
 
+var stats = {
+  initials: [],
+  score: [],
+};
+
 form.addEventListener("submit", function (event) {
-  event.preventDefault();
-  var stats = {
-    initials: document.querySelector("input").value.trim(),
-    score: score,
-  };
-  console.log(stats);
+  var storedStats = JSON.parse(localStorage.getItem("highScores"));
+  console.log(storedStats);
+
+  if (storedStats === null) {
+    console.log("false");
+  } else {
+    stats.initials = storedStats.initials;
+    stats.score = storedStats.score;
+  }
+
+  stats.initials.push(document.querySelector("input").value.trim());
+  stats.score.push(score);
+
+  localStorage.setItem("highScores", JSON.stringify(stats));
+
+  console.log(storedStats);
+  location.reload();
+});
+
+var scoreItem;
+leaderBoard.addEventListener("click", function () {
+  var storedStats = JSON.parse(localStorage.getItem("highScores"));
+  console.log(storedStats);
+  console.log(storedStats.score[3]);
+
+  instructions.setAttribute("style", "display: none");
+  startButton.setAttribute("style", "display: none");
+
+  for (var i = 0; i < 9; i++) {
+    if (storedStats.score[i] == null) {
+    } else {
+      scoreItem = document.createElement("li");
+      scoreItem.textContent =
+        storedStats.initials[i] + " --- " + storedStats.score[i];
+      mainDisplay.appendChild(scoreItem);
+    }
+  }
+
+  backToGameButton = document.getElementById("backToGame");
+  backToGameButton.textContent = "Back to game";
+});
+
+backToGameButton = document.getElementById("backToGame");
+
+backToGameButton.addEventListener("click", function () {
+  location.reload();
 });

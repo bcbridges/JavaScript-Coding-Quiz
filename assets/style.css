@@ -40,6 +40,13 @@
   margin-left: 4vw;
 }
 
+#backToGame {
+  position: relative;
+  bottom: 5vh;
+  left: 1vw;
+  color: white;
+}
+
 #title div {
   height: 12vw;
   width: 52vw;
