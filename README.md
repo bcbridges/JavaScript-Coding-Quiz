@@ -2,6 +2,8 @@
 
 ## Description of Project
 
+This quiz was created to practice developing a website using 'vanilla' HTML, CSS, and JavaScript. Designing the quiz used various DOM traversing methods to de-populate and re-populate the web page with the appropriate information. Event listeners were used to navigate the user through the quiz to the correct section based on various time and question # criteria.
+
 ### index.html
 
 - The html was designed to be containers for the JavaScript to insert content into.
